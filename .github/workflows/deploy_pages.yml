@@ -1,0 +1,45 @@
+name: Deploy Flutter Web (example) to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "pages-deploy"
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          cache: true
+
+      # 关键：进入 example（因为你的可运行 App 在 example/）
+      - name: Pub get (example)
+        working-directory: example
+        run: flutter pub get
+
+      # 关键：base-href 必须匹配 repo 名（项目页）
+      - name: Build web (example)
+        working-directory: example
+        run: flutter build web --release --base-href "/${{ github.event.repository.name }}/"
+
+      # 部署 build/web 到 gh-pages 分支根目录
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: example/build/web
+          force_orphan: true
