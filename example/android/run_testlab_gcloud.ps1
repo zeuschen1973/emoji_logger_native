@@ -2,8 +2,8 @@
 # Firebase Test Lab run script
 # ================================
 
-$APP_APK  = "C:\Temp\tempzc\Flutter\Code\emoji_logger_native\example\build\app\outputs\apk\debug\app-debug.apk"
-$TEST_APK = "C:\Temp\tempzc\Flutter\Code\emoji_logger_native\example\build\app\outputs\apk\androidTest\debug\app-debug-androidTest.apk"
+$APP_APK  = "D:\DEVELOP\emoji_logger_native\example\build\app\outputs\apk\debug\app-debug.apk"
+$TEST_APK = "D:\DEVELOP\emoji_logger_native\example\build\app\outputs\apk\androidTest\debug\app-debug-androidTest.apk"
 
 # Pixel 8a: akita   Pixel 8: shiba   Pixel 8 Pro: husky   Pixel 9: tokay
 $DEVICE = "model=akita,version=34,locale=en_US,orientation=portrait"
