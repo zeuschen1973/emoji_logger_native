@@ -142,7 +142,7 @@ class _MyAppState extends State<MyApp> {
                         extra: {'button': 'debug'},
                       );
                     },
-                    child: const Text('debug'),
+                    child: const Text('Debug'),
                   ),
                   const SizedBox(width: 20),
                   ElevatedButton(
@@ -157,7 +157,7 @@ class _MyAppState extends State<MyApp> {
                         //rethrow;
                       }
                     },
-                    child: const Text('error'),
+                    child: const Text('Error'),
                   ),
                 ],
               ),
